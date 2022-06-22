@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Models\Subscriber;
+use App\Models\Post;
 
 class MailingListController extends Controller
 {
@@ -15,14 +16,12 @@ class MailingListController extends Controller
      */
     public function index()
     {
-        $website_id = 2;
-        $subs = Website::find($website_id)->subscribers();
-
-        var_dump($subs->count(), $subs->where('email', 'bob@example.com')->limit(1)->first());
-        if($subs === NULL){
-            echo "NO subs";
-        }
-        
+        // $id = 1;
+        // $x = Post::find($id)->website->subscribers()->get();
+        // foreach($x as $y){
+        //     var_dump($y->email);
+        // }
+        // dd($x);
     }
 
     /**

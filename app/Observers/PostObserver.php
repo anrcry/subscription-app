@@ -17,7 +17,8 @@ class PostObserver
     public function created(Post $post)
     {
         // Then first get all the subscribers...
-        $subscribers = $post->subscribers();
+        $subscribers = $post->website->subscribers()->get();
+        
         $details['title'] = $post->title;
         $details['contents'] = $post->contents;
 

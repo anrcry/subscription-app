@@ -24,7 +24,7 @@ Route::controller(WebsiteController::class)->group(function () {
 });
 
 Route::controller(PostController::class)->group(function() {
-    
+
     Route::post('/websites/{websiteId}/posts', 'store');
 
     # Direct path for posts
@@ -41,6 +41,8 @@ Route::controller(PostController::class)->group(function() {
 
 Route::controller(MailingListController::class)->group(function() {
     
+    // Route::any('/index', 'index');
+
     // New subscriber
     Route::post('/websites/{websiteId}/subscribe', 'store');
 
