@@ -178,6 +178,8 @@ The front-end of this application will be a work-in progress. With this simple a
 
 
 
-Thanks,
+Thanks to Team Inisev....
 
-Team Inisev
+Thank You & Regards,
+
+`@formula21 (Anweshan Roy Chowdury)`
