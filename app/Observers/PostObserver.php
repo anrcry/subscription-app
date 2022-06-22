@@ -26,8 +26,6 @@ class PostObserver
             $details['reciever'] = $subscriber->name ?? $subscriber->email;
             dispatch(new SendEmailJob($details));
         }
-
-        dd("Pssst: I came here.....");
     }
  
     /**
