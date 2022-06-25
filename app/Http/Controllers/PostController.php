@@ -71,7 +71,7 @@ class PostController extends Controller
      * @param  int|null  $post_id
      * @return \Illuminate\Http\Response
      */
-    public function show($website_id = null, $post_id = null, Request $request){
+    public function show(Request $request, $website_id = null, $post_id = null){
         
         $response = ['success'=>false];
 
@@ -163,6 +163,7 @@ class PostController extends Controller
                 if($post->website->id != $website->id){
                     $response['success'] = false;
                     $response['message'] = "The post with id {$post_id} does not belong to the website with id {$website_id}";
+                    unset($response['post']);
                     return response()->json($response, 404, [], parent::JSON_RESPONSE);
                 }else{
                     unset($response['post']['website']);
