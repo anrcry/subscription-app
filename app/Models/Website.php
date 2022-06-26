@@ -73,7 +73,7 @@ class Website extends Model
      */
     public function posts()
     {
-        return $this->hasMany(Post::class, 'website_id'. 'id');
+        return $this->hasMany(Post::class, 'website_id', 'id');
     }
 
 
