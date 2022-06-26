@@ -35,7 +35,7 @@ Route::controller(PostController::class)->group(function() {
     Route::get('/websites/{websiteId}/posts', 'show');
     Route::get('/websites/{websiteId}/posts/{postId}', 'show');
     
-    Route::match(['put', 'post'],'/posts/{postId}', 'update')->name('post.update');;
+    Route::match(['put', 'post'],'/posts/{postId}', 'update')->name('post.update');
     Route::match(['put', 'post'],'/websites/{websiteId}/posts/{postId}', 'update');
 });
 
