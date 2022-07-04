@@ -69,6 +69,13 @@ class Website extends Model
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ["name", "description"];
+
+    /**
      * Get all posts of a particular website.
      */
     public function posts()

@@ -19,9 +19,17 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct(
+        public string $post_title,
+        public string $post_contents,
+        public string $email,
+        public string $name,
+        public string|null $subject = null,
+        public array|null $headers = null,
+    )
     {
-        $this->details = $details;
+        list($this->post_title, $this->post_contents, $this->email, $this->name, $this->subject,$this->headers) = 
+        array($post_title, $post_contents, $email, $name, $subject ,$headers);
     }
 
     /**
@@ -31,8 +39,8 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        $notify = new NotifySubscriber($this->details['email'], $this->details['reciever'] ?? $this->details['email'], $this->details['title'], $this->details['body']);
-
-        Mail::to($this->details['email'])->send($notify);
+        $notify = new NotifySubscriber($this->email, $this->name, $this->subject,$this->post_title, $this->post_contents, $this->headers);
+        
+        Mail::send($notify);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Models\Post;
-
 use App\Jobs\SendEmailJob;
 
 class PostObserver
@@ -15,17 +14,18 @@ class PostObserver
      * @return void
      */
     public function created(Post $post)
-    {
-        // Then first get all the subscribers...
+    {        
+        // Get all the subscribers...
+        $website = $post->website()->first();
         $subscribers = $post->website->subscribers()->get();
-        
-        $details['title'] = $post->title;
-        $details['contents'] = $post->contents;
 
+        $subject = "We have a new post \"{$post->title}\" on {$website->name}";
+
+        // Iterate over the subscribers 
         foreach($subscribers as $subscriber){
-            $details['email'] = $subscriber->email;
-            $details['reciever'] = $subscriber->name ?? $subscriber->email;
-            dispatch(new SendEmailJob($details));
+            // New job
+			$job = new SendEmailJob($post->title, $post->contents, $subscriber->email, $subject,$subscriber->name);
+            dispatch($job);
         }
     }
  

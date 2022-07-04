@@ -24,7 +24,7 @@ Route::controller(WebsiteController::class)->group(function () {
 });
 
 Route::controller(PostController::class)->group(function() {
-
+    
     Route::post('/websites/{websiteId}/posts', 'store');
 
     # Direct path for posts
@@ -35,14 +35,13 @@ Route::controller(PostController::class)->group(function() {
     Route::get('/websites/{websiteId}/posts', 'show');
     Route::get('/websites/{websiteId}/posts/{postId}', 'show');
     
-    Route::match(['put', 'post'],'/posts/{postId}', 'update')->name('post.update');
+    # The update
+    Route::match(['put', 'post'],'/posts/{postId}', 'update')->name('post.update');;
     Route::match(['put', 'post'],'/websites/{websiteId}/posts/{postId}', 'update');
 });
 
 Route::controller(MailingListController::class)->group(function() {
     
-    // Route::any('/index', 'index');
-
     // New subscriber
     Route::post('/websites/{websiteId}/subscribe', 'store');
 
@@ -51,8 +50,8 @@ Route::controller(MailingListController::class)->group(function() {
     
     // Show your name & subscription date on record (and maybe the number of notifications sent).
     // providing email as a query
-
     Route::get('/websites/{websiteId}/subscriber', 'show');
+
     // Remove the subscription of this user providing email as a query
     Route::delete('/websites/{websiteId}/subscriber', 'destroy');
 });

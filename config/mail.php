@@ -115,4 +115,16 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Mail Settings
+    |--------------------------------------------------------------------------
+    |
+    | Using a custom setting so that it can be imported from config.
+    |
+    */
+
+    "custom_headers"=>[
+        'List-Id'=>"<formula21-updates.github.io>"
+    ],
 ];

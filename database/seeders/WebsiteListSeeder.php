@@ -14,13 +14,15 @@ class WebsiteListSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('websites')->insert([[
-            'name' => 'Website 1',
-            'description' => 'Alex\'s Blog',
-        ],
-        [
-            'name' => 'Website 2',
-            'description'=>NULL
-        ]]);
+        DB::table('websites')->insert([
+            [
+                'name' => 'Alex\'s Blog',
+                'description' => 'Hi! I am Alex. I will regularly post about my life on this website. Stay tuned.',
+            ],
+            [
+                'name' => 'Sarah\'s Blog',
+                'description'=>"Hi! Sarah here.... I will regulary post about my pet Tommy! Stay tuned...."
+            ]
+        ]);
     }
 }

@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Notification</title>
 </head>
 <body>
-    <p>Dear {{ $reciever }}, we have a new post.</p>
+    <p>Hi! {{ $name }}, <br/>We have a new post.</p>
+    <br/>
+    <h1>Post Title: {{ $post_title }}</h1>
+    <p>{{ $post_contents }}</p>
     <hr/>
-    <h1>{{ $title }}</h1>
-    <hr/>
-    <p>{{ $contents }}</p>
+    <p>See you soon.</p>
 </body>
 </html>

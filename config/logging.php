@@ -48,6 +48,10 @@ return [
     */
 
     'channels' => [
+        'general' => [
+            'driver'=> 'single',
+            'path' => storage_path('logs/general.log'),
+        ],
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
