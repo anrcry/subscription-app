@@ -1,0 +1,1460 @@
+{
+	"info": {
+		"_postman_id": "eed1b06e-68a2-4c82-b8e9-6cb8edef2e86",
+		"name": "Laravel Subscription App",
+		"description": "StartFragment\n\nSimple subscription platform (only RESTful APIs with MySQL) in which users can subscribe to a website *(there can be multiple websites in the system)*. Whenever a new post is published on a particular website, all it's subscribers shall receive an email with the post title and description in it.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13488408"
+	},
+	"item": [
+		{
+			"name": "Websites",
+			"item": [
+				{
+					"name": "List of Websites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/websites",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example: List of Websites",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/websites",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Jun 2022 22:25:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Jun 2022 22:25:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 3,\n    \"websites\": [\n        {\n            \"id\": 1,\n            \"name\": \"Website 1\",\n            \"description\": \"Alex's Blog\",\n            \"created_at\": \"2022-06-21T03:55:04.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Website 2\",\n            \"description\": null,\n            \"created_at\": \"2022-06-21T03:55:04.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Eve's Blog\",\n            \"description\": \"Eve will regularly post tech updates on this website.\",\n            \"created_at\": \"2022-06-20T22:25:39.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a Website",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Eva Blog",
+									"description": "Give the name of the website",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Eve will regularly post tech updates on this website.",
+									"description": "Give a short html description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/websites",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example: Create a Website",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Eve's Blog",
+											"description": "Give the name of the website",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Eve will regularly post tech updates on this website.",
+											"description": "Give a short html description",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Jun 2022 22:25:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Jun 2022 22:25:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Successfully added a new website\",\n    \"website\": {\n        \"id\": null,\n        \"name\": \"Eve's Blog\",\n        \"description\": \"Eve will regularly post tech updates on this website.\",\n        \"created_at\": \"2022-06-20T22:25:39.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a website",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "Eve will not regularly post tech updates on this website.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id"
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Update Post",
+					"item": [
+						{
+							"name": "Update Post with Website",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "contents",
+											"value": "My House is finally not haunted",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/posts/:post_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"posts",
+										":post_id"
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "1"
+										},
+										{
+											"key": "post_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Example: Update Post with Website",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "contents",
+													"value": "My House is finally not haunted",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{URL}}/websites/:website_id/posts/:post_id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"websites",
+												":website_id",
+												"posts",
+												":post_id"
+											],
+											"variable": [
+												{
+													"key": "website_id",
+													"value": "1"
+												},
+												{
+													"key": "post_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:49:56 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:49:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Post details has been updated!\",\n    \"post\": {\n        \"id\": 1,\n        \"name\": \"My House\",\n        \"description\": \"My House is finally not haunted\",\n        \"created_at\": \"2022-06-21T17:51:01.000000Z\",\n        \"updated_at\": \"2022-06-21T12:49:56.000000Z\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Post",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": " My Dark House",
+											"type": "text"
+										},
+										{
+											"key": "contents",
+											"value": "My House is finally not haunted, but just the electricity was cut off... OMG...",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/posts/:post_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"posts",
+										":post_id"
+									],
+									"variable": [
+										{
+											"key": "post_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Example: Update Post with Website",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "contents",
+													"value": "My House is finally not haunted",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{URL}}/websites/:website_id/posts/:post_id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"websites",
+												":website_id",
+												"posts",
+												":post_id"
+											],
+											"variable": [
+												{
+													"key": "website_id",
+													"value": "1"
+												},
+												{
+													"key": "post_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:49:56 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:49:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Post details has been updated!\",\n    \"post\": {\n        \"id\": 1,\n        \"name\": \"My House\",\n        \"description\": \"My House is finally not haunted\",\n        \"created_at\": \"2022-06-21T17:51:01.000000Z\",\n        \"updated_at\": \"2022-06-21T12:49:56.000000Z\"\n    }\n}"
+								},
+								{
+									"name": "Example: Update Post",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "title",
+													"value": " My Dark House",
+													"type": "text"
+												},
+												{
+													"key": "contents",
+													"value": "My House is finally not haunted, but just the electricity was cut off... OMG...",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{URL}}/posts/:post_id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"posts",
+												":post_id"
+											],
+											"variable": [
+												{
+													"key": "post_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:54:35 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:54:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Post details has been updated!\",\n    \"post\": {\n        \"id\": 1,\n        \"name\": \"My Dark House\",\n        \"description\": \"My House is finally not haunted, but just the electricity was cut off... OMG...\",\n        \"created_at\": \"2022-06-21T17:51:01.000000Z\",\n        \"updated_at\": \"2022-06-21T12:54:35.000000Z\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Posts",
+					"item": [
+						{
+							"name": "Get all posts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/posts",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a post (No website)",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get all posts from a website",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/posts",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"posts"
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a post from a website",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/posts/:post_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"posts",
+										":post_id"
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "1"
+										},
+										{
+											"key": "post_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Example: Get a post from a website",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL}}/websites/:website_id/posts/:post_id",
+											"host": [
+												"{{URL}}"
+											],
+											"path": [
+												"websites",
+												":website_id",
+												"posts",
+												":post_id"
+											],
+											"variable": [
+												{
+													"key": "website_id",
+													"value": "1"
+												},
+												{
+													"key": "post_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:58:03 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Jun 2022 12:58:03 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"post\": {\n        \"id\": 1,\n        \"title\": \"My Dark House\",\n        \"contents\": \"My House is finally not haunted, but just the electricity was cut off... OMG...\",\n        \"created_at\": \"2022-06-21T17:51:01.000000Z\",\n        \"updated_at\": \"2022-06-21T12:54:35.000000Z\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "New Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "My Pet",
+									"type": "text"
+								},
+								{
+									"key": "contents",
+									"value": "I have a golden pet. It is a cat. I call him Sonu!! He loves fish.\nI rescued him from the road.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id",
+								"posts"
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscribe",
+			"item": [
+				{
+					"name": "Subscribe to website",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "anweshan@example.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Anweshan",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id/subscribe",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id",
+								"subscribe"
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example: New Subscriber to website",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Anweshan",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscribe",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscribe"
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 22:57:13 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 22:57:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Subscriber added successfully\",\n    \"info\": {\n        \"email\": \"anweshan@example.com\",\n        \"name\": \"Anweshan\",\n        \"subscribed_at\": \"2022-06-21T22:57:13.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Re-Subscribe to same website",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Anweshan",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscribe",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscribe"
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Not Acceptable",
+							"code": 406,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 22:57:44 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 22:57:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Your email anweshan@example.com is already a subscriber of website id 2 from 2022-06-21 22:57:13.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify subscription to website",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "User",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id/subscribe?email=anweshan@example.com",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id",
+								"subscribe"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "anweshan@example.com"
+								}
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Updated: Modify subscription to website",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "User",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscribe?email=anweshan@example.com",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscribe"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com"
+										}
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:09:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:09:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Subscriber information updated successfully\",\n    \"info\": {\n        \"email\": \"anweshan@example.com\",\n        \"name\": \"User\",\n        \"subscribed_at\": \"2022-06-21T22:57:13.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Updated with same details, but no change",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "User",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscribe?email=anweshan@example.com",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscribe"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com"
+										}
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:10:11 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:10:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"info\": {\n        \"email\": \"anweshan@example.com\",\n        \"name\": \"User\",\n        \"subscribed_at\": \"2022-06-21T22:57:13.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Subscription from Website",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id/subscriber?email=anweshan@example.com",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id",
+								"subscriber"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "anweshan@example.com"
+								}
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Subscription from Website",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscriber?email=anweshan@example.com",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscriber"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com"
+										}
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:11:09 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:11:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Show subscription to Website",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/websites/:website_id/subscriber?email=anweshan@example.com",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"websites",
+								":website_id",
+								"subscriber"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "anweshan@example.com"
+								}
+							],
+							"variable": [
+								{
+									"key": "website_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example: Show subscription to Website",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{URL}}/websites/:website_id/subscriber?email=anweshan@example.com",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"websites",
+										":website_id",
+										"subscriber"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "anweshan@example.com"
+										}
+									],
+									"variable": [
+										{
+											"key": "website_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:10:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 23:10:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"info\": {\n        \"email\": \"anweshan@example.com\",\n        \"name\": \"User\",\n        \"subscribed_at\": \"2022-06-21T22:57:13.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		}
+	]
+}
